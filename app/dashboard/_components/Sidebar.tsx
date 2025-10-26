@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 import logo from "../../../public/logo.png";
 import dashboard from "../../../public/dashboard.png";
@@ -12,7 +13,7 @@ import savings from "../../../public/bills.png";
 import reimbursements from "../../../public/bills.png";
 import settings from "../../../public/settings.png";
 
-const sidebarItems = [
+const sidebarIcons = [
   { label: "Dashboard", icon: dashboard, size: 25 },
   { label: "Income", icon: income, size: 25 },
   { label: "Expenses", icon: expense, size: 25 },
@@ -24,6 +25,54 @@ const sidebarItems = [
 ];
 
 const Sidebar = () => {
+  // Handle button hover colors
+  const getHoverColor = (label: string) => {
+    switch (label) {
+      case "Dashboard":
+        return "hover:bg-cyan-100";
+      case "Income":
+        return "hover:bg-green-100";
+      case "Expenses":
+        return "hover:bg-red-100";
+      case "Subscriptions":
+        return "hover:bg-indigo-100";
+      case "Bills":
+        return "hover:bg-blue-100";
+      case "Debt":
+        return "hover:bg-slate-100";
+      case "Savings":
+        return "hover:bg-slate-100";
+      case "Reimbursements":
+        return "hover:bg-slate-100";
+      default:
+        return "hover:bg-slate-100";
+    }
+  };
+
+  // Handle routes to other pages
+  const getButtonRoute = (label: string) => {
+    switch (label) {
+      case "Dashboard":
+        return "/dashboard";
+      case "Income":
+        return "/income";
+      case "Expenses":
+        return "/expenses";
+      case "Subscriptions":
+        return "/subscriptions";
+      case "Bills":
+        return "/bills";
+      case "Debt":
+        return "/debt";
+      case "Savings":
+        return "/savings";
+      case "Reimbursements":
+        return "/reimbursements";
+      default:
+        return "/dashboard";
+    }
+  };
+
   return (
     <aside className="h-full w-64  p-4 flex flex-col">
       {/* Logo and title */}
@@ -37,10 +86,13 @@ const Sidebar = () => {
       {/* Main nav */}
       <nav className="flex-1">
         <ul className="space-y-3">
-          {sidebarItems.map((item) => (
-            <li
+          {sidebarIcons.map((item) => (
+            <Link
               key={item.label}
-              className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-blue-100 cursor-pointer transition-colors"
+              href={getButtonRoute(item.label)}
+              className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-colors ${getHoverColor(
+                item.label
+              )}`}
             >
               <Image
                 src={item.icon}
@@ -48,8 +100,10 @@ const Sidebar = () => {
                 height={item.size}
                 alt={item.label}
               />
-              <span>{item.label}</span>
-            </li>
+              <button>
+                <span>{item.label}</span>
+              </button>
+            </Link>
           ))}
         </ul>
       </nav>
