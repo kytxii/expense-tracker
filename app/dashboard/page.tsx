@@ -2,6 +2,7 @@ import React from "react";
 import Header from "./_components/Header";
 import Sidebar from "./_components/Sidebar";
 import Footer from "./_components/Footer";
+import TotalHeading from "../components/numbers/TotalHeading";
 
 const DashboardPage = () => {
   return (
@@ -14,13 +15,13 @@ const DashboardPage = () => {
       {/* Main Section */}
       <div className="flex flex-col flex-1">
         {/* Header */}
-        <header className="bg-white h-16 flex items-center border-b-2 border-slate-300">
+        <header className="bg-white h-19 flex items-center border-b-2 border-slate-300">
           <Header />
         </header>
 
         {/* Content */}
-        <main className="flex-1 bg-white overflow-y-auto p-4">
-          {/* Main content goes here */}
+        <main className="flex-1 bg-white overflow-y-auto p-5">
+          <TotalHeading />
         </main>
 
         {/* Footer */}

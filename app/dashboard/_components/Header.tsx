@@ -112,11 +112,11 @@ const Header = () => {
       {/* Add button and account */}
       <div className="flex items-center gap-30">
         <button>
-          <div className="bg-blue-400 pr-5 pl-5 p-2 rounded-lg hover:bg-blue-300 cursor-pointer">
+          <div className="bg-blue-white pr-5 pl-5 p-2 rounded-lg hover:bg-slate-200 cursor-pointer text-black border-2 border-slate-300">
             Add Entry
           </div>
         </button>
-        <div className="bg-blue-300 h-10 w-10 rounded-full"></div>
+        <div className="bg-slate-300 h-12 w-12 rounded-full"></div>
       </div>
     </div>
   );
