@@ -1,27 +1,43 @@
 import React from "react";
-import Header from "./_components/Header";
-import Sidebar from "./_components/Sidebar";
-import Footer from "./_components/Footer";
-import TotalHeading from "../components/numbers/TotalHeading";
+
+import Header from "../components/page_ui/Header";
+import Sidebar from "../components/page_ui/Sidebar";
+import Footer from "../components/page_ui/Footer";
+import SummaryTotal from "../components/numbers/SummaryTotal";
+import BarChart from "../components/charts/BarChart";
+
+const summaryTitles = [
+  { label: "Total Income" },
+  { label: "Total Expenses" },
+  { label: "Total Subscriptions" },
+  { label: "Total Bills" },
+];
 
 const DashboardPage = () => {
   return (
     <div className="flex min-h-screen">
       {/* Sidebar */}
-      <aside className="bg-white w-64 border-r-2 border-slate-300">
+      <aside className="">
         <Sidebar />
       </aside>
 
       {/* Main Section */}
       <div className="flex flex-col flex-1">
         {/* Header */}
-        <header className="bg-white h-19 flex items-center border-b-2 border-slate-300">
+        <header>
           <Header />
         </header>
 
         {/* Content */}
-        <main className="flex-1 bg-white overflow-y-auto p-5">
-          <TotalHeading />
+        <main className="flex flex-col p-10 justify-center ">
+          <div className="flex flex-row justify-between gap-15 mr-10 ml-10">
+            {summaryTitles.map((item) => (
+              <SummaryTotal key={item.label} title={item.label} />
+            ))}
+          </div>
+          <div className="flex justify-center m-10 mt-10">
+            <BarChart />
+          </div>
         </main>
 
         {/* Footer */}

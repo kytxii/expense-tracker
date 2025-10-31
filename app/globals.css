@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: rgb(255, 255, 255); /* slate-100 */
-  --foreground: rgb(30 41 59); /* slate-800 */
+  --background: oklch(27.4% 0.006 286.033);
+  --foreground: rgb(255, 255, 255);
 }
 
 body {

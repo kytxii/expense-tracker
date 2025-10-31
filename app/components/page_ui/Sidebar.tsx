@@ -1,6 +1,8 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import logo from "../../../public/logo.png";
 import dashboard from "../../../public/dashboard.png";
@@ -25,29 +27,8 @@ const sidebarIcons = [
 ];
 
 const Sidebar = () => {
-  // Handle button hover colors
-  const getHoverColor = (label: string) => {
-    switch (label) {
-      case "Dashboard":
-        return "hover:bg-cyan-100";
-      case "Income":
-        return "hover:bg-green-100";
-      case "Expenses":
-        return "hover:bg-red-100";
-      case "Subscriptions":
-        return "hover:bg-indigo-100";
-      case "Bills":
-        return "hover:bg-blue-100";
-      case "Debt":
-        return "hover:bg-slate-100";
-      case "Savings":
-        return "hover:bg-slate-100";
-      case "Reimbursements":
-        return "hover:bg-slate-100";
-      default:
-        return "hover:bg-slate-100";
-    }
-  };
+  const pathname = usePathname();
+  const [selectedItem, setSelectedItem] = React.useState("Dashboard"); // Default selected item
 
   // Handle routes to other pages
   const getButtonRoute = (label: string) => {
@@ -73,15 +54,41 @@ const Sidebar = () => {
     }
   };
 
+  // Handle button hover and active colors
+  const getButtonColor = (label: string) => {
+    const route = getButtonRoute(label);
+    const isSelected = pathname === route;
+    switch (label) {
+      case "Dashboard":
+        return `${isSelected ? "bg-cyan-950" : ""} hover:bg-cyan-950`;
+      case "Income":
+        return `${isSelected ? "bg-green-950" : ""} hover:bg-green-950`;
+      case "Expenses":
+        return `${isSelected ? "bg-red-950" : ""} hover:bg-red-950`;
+      case "Subscriptions":
+        return `${isSelected ? "bg-indigo-950" : ""} hover:bg-indigo-950`;
+      case "Bills":
+        return `${isSelected ? "bg-blue-950" : ""} hover:bg-blue-950`;
+      case "Debt":
+        return `${isSelected ? "bg-slate-950" : ""} hover:bg-slate-950`;
+      case "Savings":
+        return `${isSelected ? "bg-slate-950" : ""} hover:bg-slate-950`;
+      case "Reimbursements":
+        return `${isSelected ? "bg-slate-950" : ""} hover:bg-slate-950`;
+      default:
+        return `${isSelected ? "bg-slate-950" : ""} hover:bg-slate-950`;
+    }
+  };
+
   return (
-    <aside className="h-full w-64  p-4 flex flex-col">
+    <aside className="h-screen w-64  p-4 flex flex-col bg-zinc-900">
       {/* Logo and title */}
-      <a href="/dashboard">
+      <Link href="/dashboard">
         <div className="flex items-center gap-3 mb-10">
           <Image src={logo} width={40} height={40} alt="Logo" />
           <h1 className="text-xl font-bold">Expense Tracker</h1>
         </div>
-      </a>
+      </Link>
 
       {/* Main nav */}
       <nav className="flex-1">
@@ -90,9 +97,10 @@ const Sidebar = () => {
             <Link
               key={item.label}
               href={getButtonRoute(item.label)}
-              className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-colors ${getHoverColor(
+              className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-colors ${getButtonColor(
                 item.label
               )}`}
+              onClick={() => setSelectedItem(item.label)}
             >
               <Image
                 src={item.icon}
@@ -100,9 +108,7 @@ const Sidebar = () => {
                 height={item.size}
                 alt={item.label}
               />
-              <button>
-                <span>{item.label}</span>
-              </button>
+              <span>{item.label}</span>
             </Link>
           ))}
         </ul>

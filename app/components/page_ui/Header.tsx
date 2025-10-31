@@ -1,10 +1,11 @@
 "use client";
 import React, { useState, useMemo } from "react";
 import Image from "next/image";
+
 import calendar from "../../../public/calendar.png";
 
 const Header = () => {
-  const [range, setRange] = useState("Last Month");
+  const [range, setRange] = useState("Current");
 
   const options = [
     "Current",
@@ -87,13 +88,13 @@ const Header = () => {
   }, [range]);
 
   return (
-    <div className="flex w-full bg-white items-center justify-between px-10 py-3">
+    <div className="flex w-full h-19 bg-zinc-900 items-center justify-between px-10 py-3">
       {/* Date range dropdown */}
       <div className="flex items-center">
         <select
           value={range}
           onChange={(e) => setRange(e.target.value)}
-          className="mr-4 border border-slate-300 rounded px-2 py-1 bg-white text-black focus:outline-none"
+          className="mr-2 rounded px-3 py-2 bg-zinc-800 text-white focus:outline-none"
         >
           {options.map((opt) => (
             <option key={opt} value={opt}>
@@ -102,21 +103,27 @@ const Header = () => {
           ))}
         </select>
         {/* Calender widget */}
-        <div className="text-white px-1 py-1 mr-2 rounded-lg hover:bg-gray-400 cursor-pointer transition-colors">
-          <Image src={calendar} width={30} height={30} alt="Calendar widget" />
+        <div className="text-white px-2 py-2 rounded-lg hover:bg-zinc-800 cursor-pointer transition-colors">
+          <Image
+            src={calendar}
+            width={30}
+            height={30}
+            alt="Calendar widget"
+            className="filter invert"
+          />
         </div>
 
-        <div className="text-2xl text-black ml-80">{rangeText}</div>
+        <div className="text-2xl text-white ml-80">{rangeText}</div>
       </div>
 
       {/* Add button and account */}
       <div className="flex items-center gap-30">
         <button>
-          <div className="bg-blue-white pr-5 pl-5 p-2 rounded-lg hover:bg-slate-200 cursor-pointer text-black border-2 border-slate-300">
+          <div className="bg-blue-white pr-5 pl-5 p-2 rounded-lg hover:bg-zinc-800 cursor-pointer text-white">
             Add Entry
           </div>
         </button>
-        <div className="bg-slate-300 h-12 w-12 rounded-full"></div>
+        <div className="bg-zinc-700 h-12 w-12 rounded-full"></div>
       </div>
     </div>
   );
