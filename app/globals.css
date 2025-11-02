@@ -1,12 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --background: oklch(27.4% 0.006 286.033);
-  --foreground: rgb(255, 255, 255);
+  --bg-primary: #1f1f1f;
+  --bg-primary-inverted: #fff;
+  --bg-secondary: #303030;
+  --bg-comp: #121212;
 }
 
 body {
-  background-color: var(--background);
-  color: var(--foreground);
+  background-color: var(--bg-primary);
+  color: var(--bg-primary-inverted);
   font-family: var(--font-ubuntu), sans-serif;
 }

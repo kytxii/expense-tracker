@@ -81,7 +81,7 @@ const Sidebar = () => {
   };
 
   return (
-    <aside className="h-screen w-64  p-4 flex flex-col bg-zinc-900">
+    <aside className="h-screen w-64 p-4 flex flex-col bg-[var(--bg-comp)]">
       {/* Logo and title */}
       <Link href="/dashboard">
         <div className="flex items-center gap-3 mb-10">
@@ -115,9 +115,15 @@ const Sidebar = () => {
       </nav>
 
       {/* Settings (bottom) */}
-      <div className="mt-auto border-t border-slate-300 pt-4">
-        <button className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-200 w-full text-left cursor-pointer">
-          <Image src={settings} width={20} height={20} alt="Settings" />
+      <div className="mt-auto border-t border-[var(--bg-secondary)] pt-4">
+        <button className="flex items-center gap-5 px-3 py-2 rounded-lg hover:bg-[var(--bg-primary)] w-full text-left cursor-pointer">
+          <Image
+            src={settings}
+            width={20}
+            height={20}
+            alt="Settings"
+            className="filter invert"
+          />
           Settings
         </button>
       </div>

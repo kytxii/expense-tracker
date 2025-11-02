@@ -88,13 +88,13 @@ const Header = () => {
   }, [range]);
 
   return (
-    <div className="flex w-full h-19 bg-zinc-900 items-center justify-between px-10 py-3">
+    <div className="flex w-full h-19 bg-[var(--bg-comp)] items-center justify-between px-10 py-3 ">
       {/* Date range dropdown */}
       <div className="flex items-center">
         <select
           value={range}
           onChange={(e) => setRange(e.target.value)}
-          className="mr-2 rounded px-3 py-2 bg-zinc-800 text-white focus:outline-none"
+          className="mr-2 rounded px-3 py-2 bg-[var(--bg-primary)] text-[var(--bg-primary-inverted)] focus:outline-none"
         >
           {options.map((opt) => (
             <option key={opt} value={opt}>
@@ -103,7 +103,7 @@ const Header = () => {
           ))}
         </select>
         {/* Calender widget */}
-        <div className="text-white px-2 py-2 rounded-lg hover:bg-zinc-800 cursor-pointer transition-colors">
+        <div className="text-[var(--bg-primary-inverted)] px-2 py-2 rounded-lg hover:bg-[var(--bg-primary)] cursor-pointer transition-colors duration-200">
           <Image
             src={calendar}
             width={30}
@@ -112,18 +112,19 @@ const Header = () => {
             className="filter invert"
           />
         </div>
-
-        <div className="text-2xl text-white ml-80">{rangeText}</div>
+      </div>
+      <div className="text-2xl text-[var(--bg-primary-inverted)]">
+        {rangeText}
       </div>
 
       {/* Add button and account */}
       <div className="flex items-center gap-30">
         <button>
-          <div className="bg-blue-white pr-5 pl-5 p-2 rounded-lg hover:bg-zinc-800 cursor-pointer text-white">
+          <div className="pr-5 pl-5 p-2 rounded-lg hover:bg-[var(--bg-primary)] cursor-pointer text-[var(--bg-primary-inverted)]">
             Add Entry
           </div>
         </button>
-        <div className="bg-zinc-700 h-12 w-12 rounded-full"></div>
+        <div className="bg-[var(--bg-secondary)] h-12 w-12 rounded-full"></div>
       </div>
     </div>
   );
