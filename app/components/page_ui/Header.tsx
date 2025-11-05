@@ -88,7 +88,7 @@ const Header = () => {
   }, [range]);
 
   return (
-    <div className="flex w-full h-19 bg-[var(--bg-comp)] items-center justify-between px-10 py-3 ">
+    <div className="flex fixed top-0 left-64 right-0 h-19 bg-[var(--bg-comp)] items-center justify-between px-10 py-3">
       {/* Date range dropdown */}
       <div className="flex items-center">
         <select

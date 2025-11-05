@@ -81,7 +81,7 @@ const Sidebar = () => {
   };
 
   return (
-    <aside className="h-screen w-64 p-4 flex flex-col bg-[var(--bg-comp)]">
+    <aside className="fixed top-0 left-0 h-screen w-64 p-4 flex flex-col bg-[var(--bg-comp)] overflow-hidden">
       {/* Logo and title */}
       <Link href="/dashboard">
         <div className="flex items-center gap-3 mb-10">
