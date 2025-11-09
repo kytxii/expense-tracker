@@ -4,7 +4,9 @@
   --bg-primary: #1f1f1f;
   --bg-primary-inverted: #fff;
   --bg-secondary: #303030;
-  --bg-comp: #121212;
+  --bg-third: #1a1a1a;
+  --bg-component: #121212;
+  --bg-button: #0d0d0d;
 }
 
 body {
