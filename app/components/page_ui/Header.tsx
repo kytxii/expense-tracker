@@ -2,7 +2,7 @@
 import React, { useState, useMemo } from "react";
 import Image from "next/image";
 
-import AddEntryButton from "./EntryButton";
+import EntryButton from "./EntryButton";
 
 import calendar from "../../../public/calendar.png";
 
@@ -121,7 +121,7 @@ const Header = () => {
 
       {/* Add button and account */}
       <div className="flex items-center gap-30">
-        <AddEntryButton />
+        <EntryButton />
         <div className="bg-[var(--bg-secondary)] h-12 w-12 rounded-full"></div>
       </div>
     </div>
