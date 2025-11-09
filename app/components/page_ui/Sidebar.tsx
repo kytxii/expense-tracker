@@ -58,7 +58,7 @@ const Sidebar = () => {
   const getButtonColor = (label: string) => {
     const route = getButtonRoute(label);
     const isSelected = pathname === route;
-    switch (label) {
+    /*switch (label) {
       case "Dashboard":
         return `${isSelected ? "bg-cyan-950" : ""} hover:bg-cyan-950`;
       case "Income":
@@ -77,7 +77,11 @@ const Sidebar = () => {
         return `${isSelected ? "bg-slate-950" : ""} hover:bg-slate-950`;
       default:
         return `${isSelected ? "bg-slate-950" : ""} hover:bg-slate-950`;
-    }
+    }*/
+
+    return `${
+      isSelected ? "bg-[var(--bg-secondary)]" : ""
+    } hover:bg-[var(--bg-secondary)]`;
   };
 
   return (

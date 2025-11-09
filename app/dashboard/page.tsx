@@ -3,7 +3,7 @@ import React from "react";
 import Header from "../components/page_ui/Header";
 import Sidebar from "../components/page_ui/Sidebar";
 import Footer from "../components/page_ui/Footer";
-import SummaryTotal from "../components/numbers/SummaryTotal";
+import TotalAmount from "../components/numbers/TotalAmount";
 import BarChart from "../components/charts/BarChart";
 
 const summaryTitles = [
@@ -17,25 +17,25 @@ const DashboardPage = () => {
   return (
     <div className="flex min-h-screen">
       {/* Sidebar */}
-      <aside className="">
+      <aside className="w-64 flex-shrink-0 h-screen sticky top-0">
         <Sidebar />
       </aside>
 
       {/* Main Section */}
-      <div className="flex flex-col flex-1">
+      <div className="flex flex-col flex-1 ">
         {/* Header */}
         <header>
           <Header />
         </header>
 
         {/* Content */}
-        <main className="flex flex-col p-10 justify-center ">
-          <div className="flex flex-row justify-between gap-15 mr-10 ml-10">
+        <main className="flex flex-col p-10 justify-center mt-19">
+          <div className="flex flex-row justify-between bg-[var(--bg-comp)] p-2 rounded-lg">
             {summaryTitles.map((item) => (
-              <SummaryTotal key={item.label} title={item.label} />
+              <TotalAmount key={item.label} title={item.label} />
             ))}
           </div>
-          <div className="flex justify-center m-10 mt-10">
+          <div className="flex justify-center mt-10 bg-[var(--bg-comp)] p-2 rounded-lg">
             <BarChart />
           </div>
         </main>
