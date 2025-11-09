@@ -80,12 +80,12 @@ const Sidebar = () => {
     }*/
 
     return `${
-      isSelected ? "bg-[var(--bg-secondary)]" : ""
-    } hover:bg-[var(--bg-secondary)]`;
+      isSelected ? "bg-[var(--bg-third)]" : ""
+    } hover:bg-[var(--bg-third)]`;
   };
 
   return (
-    <aside className="fixed top-0 left-0 h-screen w-64 p-4 flex flex-col bg-[var(--bg-comp)] overflow-hidden">
+    <aside className="fixed top-0 left-0 h-screen w-64 p-4 flex flex-col bg-[var(--bg-component)] overflow-hidden">
       {/* Logo and title */}
       <Link href="/dashboard">
         <div className="flex items-center gap-3 mb-10">
@@ -101,7 +101,7 @@ const Sidebar = () => {
             <Link
               key={item.label}
               href={getButtonRoute(item.label)}
-              className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-colors ${getButtonColor(
+              className={`flex items-center gap-3 px-3 py-2 rounded-md transition-colors ${getButtonColor(
                 item.label
               )}`}
               onClick={() => setSelectedItem(item.label)}
@@ -120,7 +120,7 @@ const Sidebar = () => {
 
       {/* Settings (bottom) */}
       <div className="mt-auto border-t border-[var(--bg-secondary)] pt-4">
-        <button className="flex items-center gap-5 px-3 py-2 rounded-lg hover:bg-[var(--bg-primary)] w-full text-left cursor-pointer">
+        <button className="flex items-center gap-5 px-3 py-2 rounded-lg hover:bg-[var(--bg-third)] w-full text-left cursor-pointer">
           <Image
             src={settings}
             width={20}

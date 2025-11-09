@@ -2,6 +2,8 @@
 import React, { useState, useMemo } from "react";
 import Image from "next/image";
 
+import AddEntryButton from "./EntryButton";
+
 import calendar from "../../../public/calendar.png";
 
 const Header = () => {
@@ -88,13 +90,13 @@ const Header = () => {
   }, [range]);
 
   return (
-    <div className="flex fixed top-0 left-64 right-0 h-19 bg-[var(--bg-comp)] items-center justify-between px-10 py-3">
+    <div className="flex fixed top-0 left-64 right-0 h-19 bg-[var(--bg-component)] items-center justify-between px-10 py-3">
       {/* Date range dropdown */}
       <div className="flex items-center">
         <select
           value={range}
           onChange={(e) => setRange(e.target.value)}
-          className="mr-2 rounded px-3 py-2 bg-[var(--bg-primary)] text-[var(--bg-primary-inverted)] focus:outline-none"
+          className="mr-2 rounded-md px-3 py-2 bg-[var(--bg-primary)] text-[var(--bg-primary-inverted)] focus:outline-none hover:bg-[var(--bg-third)]"
         >
           {options.map((opt) => (
             <option key={opt} value={opt}>
@@ -103,7 +105,7 @@ const Header = () => {
           ))}
         </select>
         {/* Calender widget */}
-        <div className="text-[var(--bg-primary-inverted)] px-2 py-2 rounded-lg hover:bg-[var(--bg-primary)] cursor-pointer transition-colors duration-200">
+        <div className="text-[var(--bg-primary-inverted)] p-1.5 rounded-md hover:bg-[var(--bg-third)] cursor-pointer transition-colors duration-200">
           <Image
             src={calendar}
             width={30}
@@ -119,11 +121,7 @@ const Header = () => {
 
       {/* Add button and account */}
       <div className="flex items-center gap-30">
-        <button>
-          <div className="pr-5 pl-5 p-2 rounded-lg hover:bg-[var(--bg-primary)] cursor-pointer text-[var(--bg-primary-inverted)]">
-            Add Entry
-          </div>
-        </button>
+        <AddEntryButton />
         <div className="bg-[var(--bg-secondary)] h-12 w-12 rounded-full"></div>
       </div>
     </div>
