@@ -58,26 +58,6 @@ const Sidebar = () => {
   const getButtonColor = (label: string) => {
     const route = getButtonRoute(label);
     const isSelected = pathname === route;
-    /*switch (label) {
-      case "Dashboard":
-        return `${isSelected ? "bg-cyan-950" : ""} hover:bg-cyan-950`;
-      case "Income":
-        return `${isSelected ? "bg-green-950" : ""} hover:bg-green-950`;
-      case "Expenses":
-        return `${isSelected ? "bg-red-950" : ""} hover:bg-red-950`;
-      case "Subscriptions":
-        return `${isSelected ? "bg-indigo-950" : ""} hover:bg-indigo-950`;
-      case "Bills":
-        return `${isSelected ? "bg-blue-950" : ""} hover:bg-blue-950`;
-      case "Debt":
-        return `${isSelected ? "bg-slate-950" : ""} hover:bg-slate-950`;
-      case "Savings":
-        return `${isSelected ? "bg-slate-950" : ""} hover:bg-slate-950`;
-      case "Reimbursements":
-        return `${isSelected ? "bg-slate-950" : ""} hover:bg-slate-950`;
-      default:
-        return `${isSelected ? "bg-slate-950" : ""} hover:bg-slate-950`;
-    }*/
 
     return `${
       isSelected ? "bg-[var(--bg-third)]" : ""
