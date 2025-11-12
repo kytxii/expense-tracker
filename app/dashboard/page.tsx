@@ -30,20 +30,20 @@ const DashboardPage = () => {
 
         {/* Content */}
         <main className="flex flex-col p-10 justify-center mt-19">
-          <div className="flex flex-row justify-between bg-[var(--bg-comp)] p-2 rounded-lg">
+          <div className="flex flex-row justify-between">
             {summaryTitles.map((item) => (
               <TotalAmount key={item.label} title={item.label} />
             ))}
           </div>
-          <div className="flex justify-center mt-10 bg-[var(--bg-comp)] p-2 rounded-lg">
+          <div className="flex justify-center mt-10">
             <BarChart />
           </div>
         </main>
 
         {/* Footer */}
-        {/* <footer className="bg-white h-12 flex items-center justify-center border-t-2 border-slate-300">
+        <footer className="bg-[var(--bg-component)] h-50 mt-100 flex items-center justify-center">
           <Footer />
-        </footer> */}
+        </footer>
       </div>
     </div>
   );
