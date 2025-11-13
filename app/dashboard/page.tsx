@@ -3,8 +3,8 @@ import React from "react";
 import Header from "../components/page_ui/Header";
 import Sidebar from "../components/page_ui/Sidebar";
 import Footer from "../components/page_ui/Footer";
-import TotalAmount from "../components/numbers/TotalAmount";
-import BarChart from "../components/charts/BarChart";
+import TotalAmount from "../components/features/visualizations/TotalAmount";
+import BarChart from "../components/features/visualizations/BarChart";
 
 const summaryTitles = [
   { label: "Total Income" },

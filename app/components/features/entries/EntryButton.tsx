@@ -11,7 +11,7 @@ const EntryButton = () => {
       <div>
         <button
           className="pr-5 pl-5 p-2 rounded-lg bg-[var(--bg-primary)] hover:bg-[var(--bg-third)] cursor-pointer text-[var(--bg-primary-inverted)]"
-          onClick={() => setOpen(true)}
+          onClick={() => setOpen((prev) => !prev)}
         >
           Add Entry
         </button>

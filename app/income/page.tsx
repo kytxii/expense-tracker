@@ -3,8 +3,8 @@ import React, { useState } from "react";
 
 import Header from "../components/page_ui/Header";
 import Sidebar from "../components/page_ui/Sidebar";
-import RemainderChart from "../components/charts/RemainderChart";
-import PaidToggle from "../components/page_ui/PaidToggle";
+import RemainderChart from "../components/features/visualizations/RemainderChart";
+import PaidToggle from "../components/features/entries/PaidToggle";
 
 const tempDB = [
   { name: "Salary", amount: "$3,200.00", date: "11/01/2025" },

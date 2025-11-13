@@ -2,7 +2,7 @@ import React from "react";
 
 import Header from "../components/page_ui/Header";
 import Sidebar from "../components/page_ui/Sidebar";
-import RemainderChart from "../components/charts/RemainderChart";
+import RemainderChart from "../components/features/visualizations/RemainderChart";
 
 const tempDB = [
   {

@@ -2,12 +2,14 @@
 import React, { useState, useMemo } from "react";
 import Image from "next/image";
 
-import EntryButton from "./EntryButton";
+import EntryButton from "../features/entries/EntryButton";
+import Calendar from "./Calendar";
 
-import calendar from "../../../public/calendar.png";
+import calendarImage from "../../../public/calendar.png";
 
 const Header = () => {
   const [range, setRange] = useState("Current");
+  const [open, setOpen] = useState(false);
 
   const options = [
     "Current",
@@ -105,15 +107,24 @@ const Header = () => {
           ))}
         </select>
         {/* Calender widget */}
-        <div className="text-[var(--bg-primary-inverted)] p-1.5 rounded-md hover:bg-[var(--bg-third)] cursor-pointer transition-colors duration-200">
+        <div
+          className="text-[var(--bg-primary-inverted)] p-1.5 rounded-md hover:bg-[var(--bg-third)] cursor-pointer transition-colors duration-200"
+          onClick={() => setOpen((prev) => !prev)}
+        >
           <Image
-            src={calendar}
+            src={calendarImage}
             width={30}
             height={30}
             alt="Calendar widget"
             className="filter invert"
           />
         </div>
+        {/* If open, render the calendar modal */}
+        {open && (
+          <div className="absolute top-24 left-5 z-50">
+            <Calendar />
+          </div>
+        )}
       </div>
       <div className="text-2xl text-[var(--bg-primary-inverted)]">
         {rangeText}
