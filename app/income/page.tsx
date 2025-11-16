@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Header from "../components/page_ui/Header";
 import Sidebar from "../components/page_ui/Sidebar";
 import RemainderChart from "../components/features/visualizations/RemainderChart";
-import PaidToggle from "../components/features/entries/PaidToggle";
+import DataTable from "../components/page_ui/DataTable";
 
 const tempDB = [
   { name: "Salary", amount: "$3,200.00", date: "11/01/2025" },
@@ -45,23 +45,20 @@ const IncomePage = () => {
           <div className="flex flex-col w-[49%]">
             {/* Header row */}
             <div className="flex w-full mb-2 gap-2">
-              <span className="w-2/5 bg-[var(--bg-component)] rounded-md text-left p-3 text-xl font-bold">
+              <span className="w-1/2 bg-[var(--bg-component)] rounded-md text-left p-3 text-xl font-bold">
                 Name
               </span>
-              <span className="w-1/5 bg-[var(--bg-component)] rounded-md text-left p-3 text-xl font-bold">
-                Amount
-              </span>
-              <span className="w-1/5 bg-[var(--bg-component)] rounded-md text-left p-3 text-xl font-bold">
+              <span className="w-1/4 bg-[var(--bg-component)] rounded-md text-left p-3 text-xl font-bold">
                 Date
               </span>
-              <span className="w-1/5 bg-[var(--bg-component)] rounded-md text-left p-3 text-xl font-bold">
-                Status
+              <span className="w-1/4 bg-[var(--bg-component)] rounded-md text-left p-3 text-xl font-bold">
+                Amount
               </span>
             </div>
 
             {/* Table body */}
             <div className="bg-[var(--bg-component)] rounded-md p-2">
-              <table className="w-full text-[var(--bg-primary-inverted)]">
+              {/* <table className="w-full text-[var(--bg-primary-inverted)]">
                 <tbody>
                   {tempDB.map((item, index) => {
                     const paid = paidStates[index];
@@ -74,15 +71,14 @@ const IncomePage = () => {
                         <td className="w-1/5 p-3">{item.amount}</td>
                         <td className="w-1/5 p-3">{item.date}</td>
                         <td className="w-1/5">
-                          <div className="flex justify-center scale-75">
-                            <PaidToggle />
-                          </div>
+                          <div className="flex justify-center scale-75"></div>
                         </td>
                       </tr>
                     );
                   })}
                 </tbody>
-              </table>
+              </table> */}
+              <DataTable />
             </div>
           </div>
         </div>

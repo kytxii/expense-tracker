@@ -2,8 +2,8 @@
 import React, { useState, useMemo } from "react";
 import Image from "next/image";
 
-import EntryButton from "../features/entries/EntryButton";
-import Calendar from "./Calendar";
+import EntryButton from "./EntryButton";
+import CalendarWidget from "./CalendarWidget";
 
 import calendarImage from "../../../public/calendar.png";
 
@@ -122,7 +122,7 @@ const Header = () => {
         {/* If open, render the calendar modal */}
         {open && (
           <div className="absolute top-24 left-5 z-50">
-            <Calendar />
+            <CalendarWidget />
           </div>
         )}
       </div>

@@ -48,6 +48,7 @@ body {
   background-color: var(--bg-primary);
   color: var(--bg-primary-inverted);
   font-family: var(--font-ubuntu), sans-serif;
+  user-select: none;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
