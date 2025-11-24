@@ -1,0 +1,43 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+ 
+
+model User {
+    id String @id @default(cuid())
+    authUserId String @unique
+    emailAddress String @unique
+    name String?
+    imageUrl String?
+    createdAt DateTime @default(now())
+    entries Entry[]
+
+}
+
+model Entry {
+    id String @id @default(cuid())
+    type String
+    name String
+    amount Float
+    date DateTime
+    paid Boolean?
+    userId String
+    user User @relation(fields: [userId], references: [authUserId], onDelete: Cascade) 
+    createdAt DateTime @default(now())
+    @@index([userId])
+}
+
+enum Type {
+    INCOME
+    EXPENSES
+    SUBSCRIPTIONS
+    BILLS
+    DEBT
+    SAVINGS
+    REIMBURSEMENTS
+}
