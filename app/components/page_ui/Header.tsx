@@ -1,23 +1,32 @@
 "use client";
 import React, { useState, useMemo } from "react";
 import Image from "next/image";
+import {
+  ClerkProvider,
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/nextjs";
 
 import EntryButton from "./EntryButton";
 import CalendarWidget from "./CalendarWidget";
 
-import calendarImage from "../../../public/calendar.png";
+import { CalendarDays } from "lucide-react";
 
 const Header = () => {
   const [range, setRange] = useState("Current");
-  const [open, setOpen] = useState(false);
+  const [show, setShow] = useState(false);
 
   const options = [
-    "Current",
-    "Last 7 Days",
-    "Last Month",
-    "Last 3 Months",
-    "Last 6 Months",
-    "Last Year",
+    "Today",
+    "Yesterday",
+    "Last 7 days",
+    "Last 30 days",
+    "Month to date",
+    "Year to date",
+    "Last year",
   ];
 
   const rangeText = useMemo(() => {
@@ -92,40 +101,20 @@ const Header = () => {
   }, [range]);
 
   return (
-    <div className="flex fixed top-0 left-64 right-0 h-19 bg-[var(--bg-component)] items-center justify-between px-10 py-3">
-      {/* Date range dropdown */}
-      <div className="flex items-center">
-        <select
-          value={range}
-          onChange={(e) => setRange(e.target.value)}
-          className="mr-2 rounded-md px-3 py-2 bg-[var(--bg-primary)] text-[var(--bg-primary-inverted)] focus:outline-none hover:bg-[var(--bg-third)]"
-        >
-          {options.map((opt) => (
-            <option key={opt} value={opt}>
-              {opt}
-            </option>
-          ))}
-        </select>
-        {/* Calender widget */}
-        <div
-          className="text-[var(--bg-primary-inverted)] p-1.5 rounded-md hover:bg-[var(--bg-third)] cursor-pointer transition-colors duration-200"
-          onClick={() => setOpen((prev) => !prev)}
-        >
-          <Image
-            src={calendarImage}
-            width={30}
-            height={30}
-            alt="Calendar widget"
-            className="filter invert"
-          />
-        </div>
-        {/* If open, render the calendar modal */}
-        {open && (
-          <div className="absolute top-24 left-5 z-50">
-            <CalendarWidget />
-          </div>
-        )}
+    <div className="flex fixed top-0 left-64 right-0 h-19 bg-[var(--bg-component)] items-center justify-between pr-10 pl-5 py-3">
+      {/* Calender widget */}
+      <div
+        className="text-[var(--bg-primary-inverted)] p-1.5 rounded-md hover:bg-[var(--bg-third)] cursor-pointer transition-colors duration-200"
+        onClick={() => setShow((prev) => !prev)}
+      >
+        <CalendarDays className="h-10" />
       </div>
+      {/* Show the calendar modal */}
+      {show && (
+        <div className="absolute top-24 left-5 z-50">
+          <CalendarWidget />
+        </div>
+      )}
       <div className="text-2xl text-[var(--bg-primary-inverted)]">
         {rangeText}
       </div>
@@ -133,7 +122,23 @@ const Header = () => {
       {/* Add button and account */}
       <div className="flex items-center gap-30">
         <EntryButton />
-        <div className="bg-[var(--bg-secondary)] h-12 w-12 rounded-full"></div>
+        <div className="flex justify-center items-center bg-[var(--bg-secondary)] h-12 w-12 rounded-full">
+          <UserButton
+            appearance={{
+              elements: {
+                userButtonTrigger: {
+                  width: "100%",
+                  height: "100%",
+                  padding: 0,
+                },
+                userButtonAvatarBox: {
+                  width: "40px",
+                  height: "40px",
+                },
+              },
+            }}
+          />
+        </div>
       </div>
     </div>
   );
