@@ -9,63 +9,68 @@ import {
   TableRow,
 } from "../ui/table";
 
-const dataEntries = [
-  {
-    name: "Walmart",
-    amount: "$15.99",
-    date: "10-11-2025",
-  },
-  {
-    name: "AJ's Fine Foods",
-    amount: "$10.95",
-    date: "09-25-2025",
-  },
-  {
-    name: "Desert Mountain",
-    amount: "$64.23",
-    date: "11-01-2025",
-  },
-  {
-    name: "Panda Express",
-    amount: "Paid",
-    date: "10-22-2025",
-  },
-  {
-    name: "McDonald's",
-    amount: "Paid",
-    date: "10-29-2025",
-  },
-  {
-    name: "Amazon",
-    amount: "Pending",
-    date: "11-15-2025",
-  },
-  {
-    name: "Steam",
-    amount: "$64.23",
-    date: "11-12-2025",
-  },
-];
+type Entry = {
+  id: string;
+  type: string;
+  name: string;
+  amount: number;
+  date: Date;
+  paid: boolean | null;
+  userId: string;
+  createdAt: Date;
+};
 
-export function DataTable() {
+type DataTableProps = {
+  entries: Entry[];
+};
+
+export function DataTable({ entries }: DataTableProps) {
+  {
+    /* Format the date */
+  }
+  const formatDate = (date: Date) => {
+    return new Date(date).toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    });
+  };
+
+  {
+    /* Format the currency amount */
+  }
+  const formatAmount = (amount: number) => {
+    return new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+    }).format(amount);
+  };
+
+  {
+    /* Calculate the total amount of all entries */
+  }
+  const total = entries.reduce((sum, entry) => sum + entry.amount, 0);
+
   return (
     <Table>
       <TableBody>
-        {dataEntries.map((entry) => (
+        {entries.map((entry) => (
           <TableRow
-            key={entry.name}
+            key={entry.id}
             className="odd:bg-[var(--bg-primary)] even:bg-[var(--bg-secondary)]"
           >
             <TableCell className="w-1/2">{entry.name}</TableCell>
-            <TableCell className="w-1/4">{entry.date}</TableCell>
-            <TableCell className="w-1/4">{entry.amount}</TableCell>
+            <TableCell className="w-1/4">{formatDate(entry.date)}</TableCell>
+            <TableCell className="w-1/4">
+              {formatAmount(entry.amount)}
+            </TableCell>
           </TableRow>
         ))}
       </TableBody>
       <TableFooter>
         <TableRow>
           <TableCell colSpan={2}>Total</TableCell>
-          <TableCell className="text-left">$2,500.00</TableCell>
+          <TableCell className="text-left">{formatAmount(total)}</TableCell>
         </TableRow>
       </TableFooter>
     </Table>
