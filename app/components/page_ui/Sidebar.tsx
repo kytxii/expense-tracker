@@ -5,25 +5,28 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import logo from "../../../public/logo.png";
-import dashboard from "../../../public/dashboard.png";
-import income from "../../../public/income.png";
-import expense from "../../../public/expense.png";
-import subscription from "../../../public/subscription.png";
-import bills from "../../../public/bills.png";
-import debt from "../../../public/bills.png";
-import savings from "../../../public/bills.png";
-import reimbursements from "../../../public/bills.png";
 import settings from "../../../public/settings.png";
+import calendar from "../../../public/calendar.png";
+import {
+  LayoutDashboard,
+  BanknoteArrowUp,
+  BanknoteArrowDown,
+  ReceiptText,
+  Landmark,
+  PiggyBank,
+  CalendarSync,
+  HandCoins,
+} from "lucide-react";
 
 const sidebarIcons = [
-  { label: "Dashboard", icon: dashboard, size: 25 },
-  { label: "Income", icon: income, size: 25 },
-  { label: "Expenses", icon: expense, size: 25 },
-  { label: "Subscriptions", icon: subscription, size: 25 },
-  { label: "Bills", icon: bills, size: 25 },
-  { label: "Debt", icon: debt, size: 25 },
-  { label: "Savings", icon: savings, size: 25 },
-  { label: "Reimbursements", icon: reimbursements, size: 25 },
+  { label: "Dashboard", icon: LayoutDashboard, size: 25 },
+  { label: "Income", icon: BanknoteArrowUp, size: 25 },
+  { label: "Expenses", icon: BanknoteArrowDown, size: 25 },
+  { label: "Subscriptions", icon: CalendarSync, size: 25 },
+  { label: "Bills", icon: ReceiptText, size: 25 },
+  { label: "Debt", icon: Landmark, size: 25 },
+  { label: "Savings", icon: PiggyBank, size: 25 },
+  { label: "Reimbursements", icon: HandCoins, size: 25 },
 ];
 
 const Sidebar = () => {
@@ -86,12 +89,7 @@ const Sidebar = () => {
               )}`}
               onClick={() => setSelectedItem(item.label)}
             >
-              <Image
-                src={item.icon}
-                width={item.size}
-                height={item.size}
-                alt={item.label}
-              />
+              <item.icon size={item.size} />
               <span>{item.label}</span>
             </Link>
           ))}
