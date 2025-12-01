@@ -1,8 +1,7 @@
-import React from "react";
 import { auth } from "@clerk/nextjs/server";
-import { prisma } from "../../lib/prisma";
 import { redirect } from "next/navigation";
 
+import { prisma } from "../../lib/prisma";
 import Header from "../components/page_ui/Header";
 import Sidebar from "../components/page_ui/Sidebar";
 import Footer from "../components/page_ui/Footer";
