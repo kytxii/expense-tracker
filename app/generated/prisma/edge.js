@@ -39,12 +39,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 7.0.0
- * Query Engine version: 0c19ccc313cf9911a90d99d2ac2eb0280c76c513
+ * Prisma Client JS version: 7.0.1
+ * Query Engine version: f09f2815f091dbba658cdcd2264306d88bb5bda6
  */
 Prisma.prismaVersion = {
-  client: "7.0.0",
-  engine: "0c19ccc313cf9911a90d99d2ac2eb0280c76c513"
+  client: "7.0.1",
+  engine: "f09f2815f091dbba658cdcd2264306d88bb5bda6"
 }
 
 Prisma.PrismaClientKnownRequestError = PrismaClientKnownRequestError;
@@ -145,8 +145,8 @@ exports.Prisma.ModelName = {
  */
 const config = {
   "previewFeatures": [],
-  "clientVersion": "7.0.0",
-  "engineVersion": "0c19ccc313cf9911a90d99d2ac2eb0280c76c513",
+  "clientVersion": "7.0.1",
+  "engineVersion": "f09f2815f091dbba658cdcd2264306d88bb5bda6",
   "activeProvider": "postgresql",
   "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../app/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n\nmodel User {\n  id           String   @id @default(cuid())\n  authUserId   String   @unique\n  emailAddress String   @unique\n  name         String?\n  imageUrl     String?\n  createdAt    DateTime @default(now())\n  entries      Entry[]\n}\n\nmodel Entry {\n  id        String   @id @default(cuid())\n  type      String\n  name      String\n  amount    Float\n  date      DateTime\n  paid      Boolean?\n  userId    String\n  user      User     @relation(fields: [userId], references: [authUserId], onDelete: Cascade)\n  createdAt DateTime @default(now())\n\n  @@index([userId])\n}\n\nenum Type {\n  INCOME\n  EXPENSES\n  SUBSCRIPTIONS\n  BILLS\n  DEBT\n  SAVINGS\n  REIMBURSEMENTS\n}\n"
 }
