@@ -57,18 +57,6 @@ const EntryModal: React.FC<EntryModalProps> = ({ onClose }) => {
             </div>
             {/* Modal body */}
             <div className="flex bg-[var(--bg-primary)] h-[100%] w-[100%] p-5 rounded-md">
-              {/* Type dropdown
-              <select
-                value={type}
-                onChange={(e) => setType(e.target.value)}
-                className="bg-[var(--bg-secondary)] hover:bg-[var(--bg-third)] w-[50%] h-[10%] rounded-md p-2"
-              >
-                {entryTypes.map((t) => (
-                  <option key={t} value={t}>
-                    {t}
-                  </option>
-                ))}
-              </select> */}
               <Field>
                 <FieldLabel>Type</FieldLabel>
                 <Select value={type} onValueChange={setType}>
