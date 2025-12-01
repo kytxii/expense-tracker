@@ -64,7 +64,10 @@ const DashboardPage = async () => {
           </div>
           {/* Header row */}
           <div className="flex w-full mb-2 gap-2 mt-10">
-            <span className="w-1/2 bg-[var(--bg-component)] rounded-md text-left p-3 text-xl font-bold">
+            <span className="w-1/4 bg-[var(--bg-component)] rounded-md text-left p-3 text-xl font-bold">
+              Type
+            </span>
+            <span className="w-1/4 bg-[var(--bg-component)] rounded-md text-left p-3 text-xl font-bold">
               Name
             </span>
             <span className="w-1/4 bg-[var(--bg-component)] rounded-md text-left p-3 text-xl font-bold">
@@ -75,7 +78,12 @@ const DashboardPage = async () => {
             </span>
           </div>
           <div className="bg-[var(--bg-component)] rounded-md p-2 ">
-            <DataTable entries={entries} />
+            {/* Show all entries on dashboard */}
+            <DataTable
+              entries={entries}
+              showPaid={false}
+              showColumns={["type", "name", "date", "amount"]}
+            />
           </div>
         </main>
 

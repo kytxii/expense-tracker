@@ -20,11 +20,26 @@ type Entry = {
   createdAt: Date;
 };
 
+{
+  /* Allows for dynamic filter rendering */
+}
 type DataTableProps = {
   entries: Entry[];
+  filterType?: string | string[]; // Filter by entry type(s)
+  showPaid?: boolean; // Filter by paid status
+  limit?: number; // Limit number of rows
+  showColumns?: ("name" | "date" | "amount" | "type" | "paid")[]; // Which columns to show
+  showTotal?: boolean; // Show footer with total
 };
 
-export function DataTable({ entries }: DataTableProps) {
+export function DataTable({
+  entries,
+  filterType,
+  showPaid,
+  limit,
+  showColumns = ["name", "date", "amount"],
+  showTotal = true,
+}: DataTableProps) {
   {
     /* Format the date */
   }
@@ -47,32 +62,66 @@ export function DataTable({ entries }: DataTableProps) {
   };
 
   {
-    /* Calculate the total amount of all entries */
+    /* Filter entries based on props */
   }
-  const total = entries.reduce((sum, entry) => sum + entry.amount, 0);
+  let filteredEntries = entries;
+
+  if (filterType) {
+    const types = Array.isArray(filterType) ? filterType : [filterType];
+    filteredEntries = filteredEntries.filter((e) => types.includes(e.type));
+  }
+
+  if (showPaid !== undefined) {
+    filteredEntries = filteredEntries.filter((e) => e.paid === showPaid);
+  }
+
+  if (limit) {
+    filteredEntries = filteredEntries.slice(0, limit);
+  }
+
+  {
+    /* Calculate the total amount of filtered entries */
+  }
+  const total = filteredEntries.reduce((sum, entry) => sum + entry.amount, 0);
 
   return (
     <Table>
       <TableBody>
-        {entries.map((entry) => (
+        {filteredEntries.map((entry) => (
           <TableRow
             key={entry.id}
             className="odd:bg-[var(--bg-primary)] even:bg-[var(--bg-secondary)]"
           >
-            <TableCell className="w-1/2">{entry.name}</TableCell>
-            <TableCell className="w-1/4">{formatDate(entry.date)}</TableCell>
-            <TableCell className="w-1/4">
-              {formatAmount(entry.amount)}
-            </TableCell>
+            {showColumns.includes("type") && (
+              <TableCell className="w-1/4">{entry.type}</TableCell>
+            )}
+            {showColumns.includes("name") && (
+              <TableCell className="w-1/4">{entry.name}</TableCell>
+            )}
+            {showColumns.includes("date") && (
+              <TableCell className="w-1/4">{formatDate(entry.date)}</TableCell>
+            )}
+            {showColumns.includes("amount") && (
+              <TableCell className="w-1/4">
+                {formatAmount(entry.amount)}
+              </TableCell>
+            )}
+            {showColumns.includes("paid") && (
+              <TableCell className="w-1/4">
+                {entry.paid ? "✓ Paid" : "✗ Unpaid"}
+              </TableCell>
+            )}
           </TableRow>
         ))}
       </TableBody>
-      <TableFooter>
-        <TableRow>
-          <TableCell colSpan={2}>Total</TableCell>
-          <TableCell className="text-left">{formatAmount(total)}</TableCell>
-        </TableRow>
-      </TableFooter>
+      {showTotal && (
+        <TableFooter>
+          <TableRow>
+            <TableCell colSpan={showColumns.length - 1}>Total</TableCell>
+            <TableCell className="text-left">{formatAmount(total)}</TableCell>
+          </TableRow>
+        </TableFooter>
+      )}
     </Table>
   );
 }
