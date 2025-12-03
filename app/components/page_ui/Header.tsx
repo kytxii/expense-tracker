@@ -11,13 +11,12 @@ import {
 } from "@clerk/nextjs";
 
 import EntryButton from "./EntryButton";
-import CalendarWidget from "./CalendarWidget";
+import DateDropdown from "./DateDropdown";
 
 import { CalendarDays } from "lucide-react";
 
 const Header = () => {
   const [range, setRange] = useState("Current");
-  const [show, setShow] = useState(false);
 
   const options = [
     "Today",
@@ -103,18 +102,10 @@ const Header = () => {
   return (
     <div className="flex fixed top-0 left-64 right-0 h-19 bg-[var(--bg-component)] items-center justify-between pr-10 pl-5 py-3">
       {/* Calender widget */}
-      <div
-        className="text-[var(--bg-primary-inverted)] p-1.5 rounded-md hover:bg-[var(--bg-third)] cursor-pointer transition-colors duration-200"
-        onClick={() => setShow((prev) => !prev)}
-      >
-        <CalendarDays className="h-10" />
+      <div className="text-[var(--bg-primary-inverted)] p-2 rounded-md bg-[var(--bg-primary)] hover:bg-[var(--bg-third)] cursor-pointer transition-colors duration-200">
+        <DateDropdown />
       </div>
-      {/* Show the calendar modal */}
-      {show && (
-        <div className="absolute top-24 left-5 z-50">
-          <CalendarWidget />
-        </div>
-      )}
+      {/* Date range title */}
       <div className="text-2xl text-[var(--bg-primary-inverted)]">
         {rangeText}
       </div>
