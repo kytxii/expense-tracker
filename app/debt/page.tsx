@@ -2,10 +2,10 @@ import { auth } from "@clerk/nextjs/server";
 import { prisma } from "../../lib/prisma";
 import { redirect } from "next/navigation";
 
-import Header from "../components/page_ui/Header";
-import Sidebar from "../components/page_ui/Sidebar";
-import RemainderChart from "../components/features/visualizations/RemainderChart";
-import DataTable from "../components/page_ui/DataTable";
+import Header from "@/components/page_ui/Header";
+import Sidebar from "@/components/page_ui/Sidebar";
+import RemainderChart from "@/components/features/visualizations/RemainderChart";
+import DataTable from "@/components/page_ui/DataTable";
 
 const DebtPage = async () => {
   const { userId } = await auth();

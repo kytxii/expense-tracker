@@ -1,13 +1,13 @@
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 
-import { prisma } from "../../lib/prisma";
-import Header from "../components/page_ui/Header";
-import Sidebar from "../components/page_ui/Sidebar";
-import Footer from "../components/page_ui/Footer";
-import TotalAmount from "../components/features/visualizations/TotalAmount";
-import BarChart from "../components/features/visualizations/BarChart";
-import DataTable from "../components/page_ui/DataTable";
+import { prisma } from "@/lib/prisma";
+import Header from "@/components/page_ui/Header";
+import Sidebar from "@/components/page_ui/Sidebar";
+import Footer from "@/components/page_ui/Footer";
+import TotalAmount from "@/components/features/visualizations/TotalAmount";
+import BarChartMultiple from "@/components/features/visualizations/BarChartMultiple";
+import DataTable from "@/components/page_ui/DataTable";
 
 const summaryTitles = [
   { label: "Total Income" },
@@ -60,7 +60,7 @@ const DashboardPage = async () => {
             ))}
           </div>
           <div className="flex justify-center mt-10">
-            <BarChart />
+            <BarChartMultiple />
           </div>
           {/* Header row */}
           <div className="flex w-full mb-2 gap-2 mt-10">
