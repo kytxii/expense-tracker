@@ -4,9 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import logo from "../../../public/logo.png";
-import settings from "../../../public/settings.png";
-import calendar from "../../../public/calendar.png";
+import logo from "../../public/logo.png";
+import settings from "../../public/settings.png";
+import calendar from "../../public/calendar.png";
 import {
   LayoutDashboard,
   BanknoteArrowUp,
