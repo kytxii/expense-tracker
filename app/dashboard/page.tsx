@@ -60,7 +60,7 @@ const DashboardPage = async () => {
             ))}
           </div>
           <div className="flex justify-center mt-10">
-            <BarChartMultiple />
+            <BarChartMultiple entries={entries} />
           </div>
           {/* Header row */}
           <div className="flex w-full mb-2 gap-2 mt-10">
